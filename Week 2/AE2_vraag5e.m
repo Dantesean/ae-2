@@ -86,23 +86,29 @@ index_LM = find(LM<=chi2inv(0.95,1));
 beta_conf_LM = [beta_0(min(index_LM)) beta_0(max(index_LM(index_LM<300))) beta_0(min(index_LM(index_LM>300))) beta_0(max(index_LM))];
 %% PLOTS 5E
 figure
-plot(beta_0,t_2sls, 'blue')
+plot(beta_0,t_2sls, 'LineWidth', 1.5)
 hold on
-plot(beta_0, ones(size(beta_0))*norminv(0.95), 'b--')
+ax = gca;
+ax.ColorOrderIndex = 1;
+plot(beta_0, ones(size(beta_0))*norminv(0.95), '--', 'LineWidth', 1.5)
 hold on
-plot(beta_0,AR, 'red')
+plot(beta_0,AR, 'LineWidth', 1.5)
 hold on
-plot(beta_0,ones(size(beta_0))*(chi2inv(0.95,k)/k), 'r--')
+ax.ColorOrderIndex = 2;
+plot(beta_0,ones(size(beta_0))*(chi2inv(0.95,k)/k), '--', 'LineWidth', 1.5)
 
-plot(beta_0,LM, 'k')
+
+plot(beta_0,LM, 'LineWidth', 1.5)
 hold on
-plot(beta_0,ones(size(beta_0))*(chi2inv(0.95,1)), 'k--')
+ax.ColorOrderIndex = 3;
+plot(beta_0,ones(size(beta_0))*(chi2inv(0.95,1)), '--', 'LineWidth', 1.5)
 hold on
-plot(beta_0,LR, 'g')
+plot(beta_0,LR, 'LineWidth', 1.5)
 hold on
-plot(beta_0,crit, 'g--')
+ax.ColorOrderIndex = 4;
+plot(beta_0,LR_crit, '--', 'LineWidth', 1.5)
 title('Statistics for Z=nearc2 nearc4 nearc4a nearc4b')
-xlabel('beta_0')
+xlabel('\beta_0')
 legend({'T-statistic', 'CV for T-statistic', 'AR-statistic', 'CV for AR-statistic', 'LM-statistic', 'CV for LM-statistic', 'LR-statistic', 'CV for LR-statistic'})
 
 

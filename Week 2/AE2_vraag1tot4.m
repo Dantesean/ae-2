@@ -86,47 +86,55 @@ LR11_crit = LR11_sort(0.95*Rep,:);
 
 
  %% PLOTS VRAAG 1 EN 3
-    legendcell = {'a=1.5', 'a=0.7', 'a=0.5', 'a=0.3', 'a=0.15', 'a=0.07', 'a=0.03', 'a=0'};
+    legendcell = {'a=0.3', 'a=0.25', 'a=0.2', 'a=0.15', 'a=0.1', 'a=0.05', 'a=0', '0.05 RF'};
     
-    figure
-    plot(rho,rejection_freq_t)
-    legend(legendcell,'location','northwest')
-    title('T-statistic')
-    xlabel('rho')
-    ylabel('Rejection frequency')
+    f1 = figure(1);
+    ax1 = axes('Parent', f1);
+    plot(ax1, rho,rejection_freq_t, 'LineWidth',1.5)
+    yline(ax1, 0.05, '-', '0.05')
+    legend(ax1, legendcell)
+    title(ax1, 't-statistic')
+    xlabel(ax1, '\rho')
+    ylabel(ax1, 'Rejection frequency')
     
-    figure
-    plot(rho,rejection_freq_AR,'LineWidth',5)
-    ylim([0 0.1])
-    legend(legendcell,'location','northwest')
-    title('AR-statistic')
-    xlabel('rho')
-    ylabel('Rejection frequency')
+    f2 = figure(2);
+    ax2 = axes('Parent', f2);
+    plot(ax2, rho,rejection_freq_AR,'LineWidth',1.5)
+    yline(ax2, 0.05, '-', '0.05')
+    ylim(ax2, [0.05 0.065])
+    legend(ax2, legendcell)
+    title(ax2, 'AR-statistic')
+    xlabel(ax2, '\rho')
+    ylabel(ax2, 'Rejection frequency')
 
-    figure
-    plot(rho,rejection_freq_LM) 
-    legend(legendcell,'location','northwest')
-    title('LM-statistic')
-     ylim([0 0.15])
-    xlabel('rho')
-    ylabel('Rejection frequency')
+    f3 = figure(3);
+    ax3 = axes('Parent', f3);
+    plot(ax3, rho,rejection_freq_LM, 'LineWidth',1.5)
+    yline(ax3, 0.05, '-', '0.05')
+    legend(ax3, legendcell)
+    title(ax3, 'LM-statistic')
+    ylim(ax3, [0.04 0.09])
+    xlabel(ax3, '\rho')
+    ylabel(ax3, 'Rejection frequency')
 
-    figure
-    plot(rho,rejection_freq_LR)
-    legend(legendcell,'location','northwest')
-    title('LR-statistic')
-     ylim([0 0.15])
-    xlabel('rho')
-    ylabel('Rejection frequency')
+    f4 = figure(4);
+    ax4 = axes('Parent', f4);
+    plot(ax4, rho,rejection_freq_LR, 'LineWidth',1.5)
+    yline(ax4, 0.05, '-', '0.05')
+    legend(ax4, legendcell)
+    title(ax4, 'LR-statistic')
+    ylim(ax4, [0.04 0.09])
+    xlabel(ax4, '\rho')
+    ylabel(ax4, 'Rejection frequency')
 
     
 %% PLOTS VRAAG 2 EN 4
 figure
-plot(r_beta_grid,LR11_crit)
+plot(r_beta_grid,LR11_crit, 'LineWidth',1.5)
 hold on
-plot(r_beta_grid,LR4_crit)
-title('LR critical values for k=4,11')
-xlabel('r(beta)')
+plot(r_beta_grid,LR4_crit, 'LineWidth', 1.5)
+title('LR critical values for k = 4,11')
+xlabel('r(\beta)')
 ylabel('CV')
 ylim([0,25])
 legend({'k=4','k=11'})

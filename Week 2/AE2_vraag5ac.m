@@ -36,15 +36,18 @@ beta_conf_t = [beta_0(min(index_t)) beta_0(max(index_t))];
     
 %% 5A plots
 figure
-plot(beta_0,t_2sls, 'blue')
+plot(beta_0,t_2sls, 'LineWidth',1.5)
 hold on
-plot(beta_0, ones(size(beta_0))*norminv(0.95), 'b--')
+ax = gca;
+ax.ColorOrderIndex = 1;
+plot(beta_0, ones(size(beta_0))*norminv(0.95), '--', 'LineWidth',1.5)
 hold on
-plot(beta_0,AR, 'r')
+plot(beta_0,AR, 'LineWidth',1.5)
 hold on
-plot(beta_0,ones(size(beta_0))*(chi2inv(0.95,k_select)/k_select), 'r--')
+ax.ColorOrderIndex = 2;
+plot(beta_0,ones(size(beta_0))*(chi2inv(0.95,k_select)/k_select), '--', 'LineWidth',1.5)
 title('AR and T-statistic for Z=nearc2')
-xlabel('beta_0')
+xlabel('\beta_0')
 legend({'T-statistic', 'CV for T-statistic', 'AR-statistic', 'CV for AR-statistic'})%,'location','northwest')
 
 
