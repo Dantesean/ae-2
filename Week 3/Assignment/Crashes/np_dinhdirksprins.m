@@ -1,8 +1,8 @@
 %% IMPORT DATA AND SET PARAMETERS
 clear;
-metroboom = importdata('metroboomin_proc.csv');
+metroboom = importdata('data/collisionweather_valuecounts.csv');
 metroboom = metroboom(metroboom(:,1)>0,:);
-trf = metroboom(:,5);    % hours worked variable
+trf = metroboom(:,2);    % hours worked variable
 range_trf = range(trf);
 trf1mid=linspace(0,range_trf,100)';
 
@@ -91,7 +91,7 @@ plot(Xpoints,CI_upper_m,'r')
 hold on
 plot(Xpoints, Y_high','c')
 legend('Kernel regression', 'CI Kernel', 'OLS regression', 'CI OLS', 'Location', 'NorthWest')
-xlim([243 310])
+% xlim([243 310])
 xlabel('Temperature')
 ylabel('Traffic Volume')
 
@@ -109,7 +109,7 @@ plot(Xpoints,CI_upper_m_opt,'r')
 hold on
 plot(Xpoints, Y_high','c')
 legend('Kernel regression', 'CI Kernel', 'OLS regression', 'CI OLS', 'Location', 'NorthWest')
-xlim([243 310])
+% xlim([243 310])
 xlabel('Temperature')
 ylabel('Traffic Volume')
 
