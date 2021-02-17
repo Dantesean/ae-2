@@ -12,3 +12,24 @@ def mp_worker(args):
     response = json_response['features'][0]['properties']['parameter']['T2M']
     
     return response
+
+def closest_point(point, points):
+    from scipy.spatial.distance import cdist
+    """ Find closest point from a list of points. """
+    return points[cdist([point], points).argmin()]
+
+def match_value(df, col1, x, col2, y, col3):
+    """ Match value x from col1 row to value in col2. """
+    return df[(df[col1] == x) & (df[col3] == y)][col2].values[0]
+
+# def wrapper(point):
+#     import pandas as pd
+#     global df1 = pd.read_csv('data/large/frame.csv')
+#     closest_point(point, list(df1['point']))
+
+def workaround(df):
+    df1 = config.df1
+    df = config.df2
+    
+    return match_value(df1, 'point', df[0], 'T2M', df[1], 'DATE')
+#       ns.ty = type(df[0])

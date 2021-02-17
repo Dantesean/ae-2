@@ -1,6 +1,6 @@
 %% IMPORT DATA AND SET PARAMETERS
 clear;
-metroboom = importdata('data/collisionweather_valuecounts.csv');
+metroboom = importdata('data/collisions_grouped.csv');
 metroboom = metroboom(metroboom(:,1)>0,:);
 trf = metroboom(:,2);    % hours worked variable
 range_trf = range(trf);
@@ -72,7 +72,7 @@ plot(trfpoints_silver,pdf_silver,'--blue');
 hold on
 plot(trfpoints,k_trf2,'Color','c');
 hold on
-plot(trf1mid,pdf_mle,'m') %check x-variable
+% plot(trf1mid,pdf_mle,'m') %check x-variable
 legend('Plug-in bandwidth', 'Silverman bandwidth','Optimal matlab bandwidth','MLE')
 xlabel('Traffic Volume')
 ylabel('Pdf(X)')
